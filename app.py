@@ -12,7 +12,7 @@ def auto_play_audio(file_path):
         b64 = player.b64encode(data).decode
         md=f"""
             <audio autolay="true">
-            <source src="data:audio/mp3,{b64}" type="audio/mp3>
+            <source src="data:audio/mp3;player,{b64}" type="audio/mp3>
             </audio>
             """
         st.markdown(md, unsafe_allow_html= True)
