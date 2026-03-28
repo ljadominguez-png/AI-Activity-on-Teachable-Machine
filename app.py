@@ -76,6 +76,7 @@ if uploaded_image:
         st.divider()
         if results == "Ai art":
             st.error(f"**Results:** This looks like an **AI Generated art**")
+            st.audio("Fahhhh - Sound effect (HD).mp3", format="audio/mpeg")
         else:
             st.success(f"**Results:** This looks like a **Human-Made art**")
             st.balloons()
