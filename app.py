@@ -23,7 +23,8 @@ st.set_page_config("Ai art vs Human art Detector")
 #title naman para sa loob ng page
 st.title(f"**Ai art vs Human art Detector**")
 st.write("Upload an art to see if it was made by Human or AI.")
-
+st.write("Listen to this chill song while waiting")
+st.audio("Jeopardy Theme.mp3", format="mpeg/mp3", autoplay= True)
 #Setting up the ai brain
 def analyzer():
     #loading the tflite model and allocate tensors
