@@ -92,6 +92,7 @@ if uploaded_image:
             auto_play_audio("Fahhhh - Sound effect (HD).mp3")
         else:
             st.success(f"**Results:** This looks like a **Human-Made art**")
+            auto_play_audio("Angry Birds Victory Sound.mp3")
             st.balloons()
         st.info(f"**Confidence Score:** {confidence:.4%}")
 
