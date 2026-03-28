@@ -93,6 +93,7 @@ if uploaded_image:
         st.divider()
         if results == "Ai art":
             st.error(f"**Results:** This looks like an **AI Generated art**")
+            st.snow()
             #st.audio("Fahhhh - Sound effect (HD).mp3", format="audio/mpeg")
             auto_play_audio("Fahhhh - Sound effect (HD).mp3")
         else:
