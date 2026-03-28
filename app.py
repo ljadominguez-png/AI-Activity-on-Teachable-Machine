@@ -95,4 +95,3 @@ if uploaded_image:
             auto_play_audio("Angry Birds Victory Sound.mp3")
             st.balloons()
         st.info(f"**Confidence Score:** {confidence:.4%}")
-
