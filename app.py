@@ -11,7 +11,7 @@ def auto_play_audio(file_path):
         data = A.read()
         b64 = player.b64encode(data).decode()
         md=f"""
-            <audio autolay="true">
+            <audio autoplay="true">
             <source src="data:audio/mp3;base64,{b64}" type="audio/mp3">
             </audio>
             """
