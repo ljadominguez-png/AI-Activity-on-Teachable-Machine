@@ -4,19 +4,20 @@ import tensorflow as tf # the brain
 import numpy as np # process
 from PIL import Image, ImageOps #for loading and processing the image
 import base64 as player #for playing the audio
-#set a title for the page
 
 def auto_play_audio(file_path):
     with open(file_path, "rb") as A:
         data = A.read()
         b64 = player.b64encode(data).decode()
+        #html file that gets the decoded file created by the b64
         md=f"""
             <audio autoplay="true">
             <source src="data:audio/mp3;base64,{b64}" type="audio/mp3">
             </audio>
             """
-        st.markdown(md, unsafe_allow_html=True)
+        st.markdown(md, unsafe_allow_html=True)#play the sound without warning
 
+#set a title for the page
 st.set_page_config("Ai art vs Human art Detector")
 
 #title naman para sa loob ng page
@@ -37,7 +38,7 @@ input_details = model.get_input_details()
 output_details = model.get_output_details()
 
 #lets the user upload files
-uploaded_image = st.file_uploader("Choose an art...", type=["jpg","png","jpeg","webp"])
+uploaded_image = st.file_uploader("Choose an art...", type=["jpg","png","jpeg","webp","avif"])
 
 #kung may na upload na file mag di display
 if uploaded_image:
@@ -46,7 +47,7 @@ if uploaded_image:
     #without this portrait images will be landscape
     image = ImageOps.exif_transpose(image)
     #displaying the image
-    st.image(image, caption="Uploaded art", use_container_width= True)
+    st.image(image, caption="Uploaded art", use_container_width=True)#without this"use_container_width=True", images that are smaller will appear smaller
 
     #pre-processing of the image
     with st.spinner("Analyzing art.."):
@@ -55,7 +56,11 @@ if uploaded_image:
         #we use lancos because it is best for downscaling big images while maintaining quality
         cropted_image = ImageOps.fit(image, size, Image.Resampling.LANCZOS)
         image_array = np.asarray(cropted_image).astype(np.float32) #converts colors to number because normaly computers don't see colors they only see numbers
-        normalized_image = (image_array/127.5)-1
+        normalized_image = (image_array/127.5)-1 # we normalize the image where -1 = pure black, 0 = neutral gray, 1 = white
+        #the packager it packages the image into a way the ai can read
+        #normally it would only look 3 dims (batch, height, width)
+        #but the required field for the model is (batch, heigh, width, color)
+        #the axis acts as a container to hold each data, without it it would not work, 
         input_data = np.expand_dims(normalized_image, axis=0)
 
         #set input data
