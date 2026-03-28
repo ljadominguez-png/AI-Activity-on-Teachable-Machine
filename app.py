@@ -62,7 +62,7 @@ if uploaded_image:
         #but the required field for the model is (batch, heigh, width, color)
         #the axis acts as a container to hold each data, without it it would not work, 
         input_data = np.expand_dims(normalized_image, axis=0)
-        print(input_data)
+        #print(input_data)
         #set input data
         model.set_tensor(input_details[0]['index'],input_data)
         model.invoke()
