@@ -3,8 +3,20 @@ import streamlit as st #for ui | for over all widgets check here: https://docs.s
 import tensorflow as tf # the brain
 import numpy as np # process
 from PIL import Image, ImageOps #for loading and processing the image
-
+import base64 as player #for playing the audio
 #set a title for the page
+
+def auto_play_audio(file_path):
+    with open(file_path, "rb") as A:
+        data = A.read()
+        b64 = player.b64encode(data).decode
+        md=f"""
+            <audio autolay="true">
+            <source src="data:audio/mp3,{b64}" type="audio/mp3>
+            </audio>
+            """
+        st.markdown(md, unsafe_allow_html= True)
+
 st.set_page_config("Ai art vs Human art Detector")
 
 #title naman para sa loob ng page
@@ -76,7 +88,8 @@ if uploaded_image:
         st.divider()
         if results == "Ai art":
             st.error(f"**Results:** This looks like an **AI Generated art**")
-            st.audio("Fahhhh - Sound effect (HD).mp3", format="audio/mpeg")
+            #st.audio("Fahhhh - Sound effect (HD).mp3", format="audio/mpeg")
+            auto_play_audio("Fahhhh - Sound effect (HD).mp3")
         else:
             st.success(f"**Results:** This looks like a **Human-Made art**")
             st.balloons()
