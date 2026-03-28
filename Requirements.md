@@ -1,9 +1,9 @@
 You will need to install this things first in order to work
 Python - 3.12.1 
-Streamlit
-Tensorflow
+tensorflow-cpu
+streamlit
+numpy
 Pillow
-Numpy
 
 you can run this command
 pip install streamlit tensorflow pillow numpy
