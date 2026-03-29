@@ -28,7 +28,7 @@ st.audio("Jeopardy Theme.mp3", format="mpeg/mp3", autoplay= True)
 #Setting up the ai brain
 def analyzer():
     #loading the tflite model and allocate tensors
-    #source: https://ai.google.dev/edge/litert/microcontrollers/python 
+    #source: https://stackoverflow.com/questions/50443411/how-to-load-a-tflite-model-in-script 
     model = tf.lite.Interpreter(model_path="model_unquant.tflite")
     model.allocate_tensors()#mandatory so that thefunction pre-allocates the necessary memory for the tensors to ensure efficient execution.
     return model
