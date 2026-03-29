@@ -96,7 +96,7 @@ if uploaded_image:
             st.error(f"**Results:** This looks like an **AI Generated art**")
             st.snow()
             #st.audio("Fahhhh - Sound effect (HD).mp3", format="audio/mpeg")
-            auto_play_audio("Fahhhh - Sound effect (HD).mp3")
+            auto_play_audio("Gem Cristian - Malunggay Pandesal (Lyrics) - (320 Kbps) (1).mp3")
         else:
             st.success(f"**Results:** This looks like a **Human-Made art**")
             auto_play_audio("Angry Birds Victory Sound.mp3")
